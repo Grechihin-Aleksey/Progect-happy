@@ -25,11 +25,16 @@
 
 body {
   font-family: 'Open Sans' ;
-  background: #E5E5E5;
   display: flex;
   flex-direction: column;
   height: 100vh;
   padding-bottom: 17px;
+}
+.women {
+  background-color: #E5E5E5;
+}
+.men {
+  background-color: #EFF9FE;
 }
 img {
   max-width: 100%;
@@ -60,6 +65,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
 }
 .header__button-change {
   width: 300px;
@@ -72,12 +78,18 @@ a {
   color: #FFFFFF;
   margin-right: 30px;
 }
+.men .header__button-change {
+  background: #1178B2;
+}
+.women .header__button-change {
+  background: #C300C7;
+}
 .header__button-change:last-child {
   margin-right: 0px;
 }
 .header__button-gender {
   width: 60px;
-  height: 60px;
+  height: 60px !important;
   background-color: #FFFFFF;
   border: 1px solid transparent;
   box-shadow: 0px 0px 24px 4px rgba(0, 0, 0, 0.04);
@@ -87,6 +99,7 @@ a {
   block-size: 36px;
   margin-right: 20px;
 }
+
 .header__button-gender:last-child {
   margin-right: 0px;
 }
@@ -96,6 +109,14 @@ a {
 .header__button-gender_women {
   background-image: url('../img/women.svg');
 }
+
+.men .header__button-gender_men {
+  border-color: #1178B2;
+}
+.women .header__button-gender_women {
+  border-color: #C300C7;
+}
+
 /*---------------------------------- MAIN ----------------------------------*/
 .card {
   flex-grow: 1;
@@ -105,10 +126,11 @@ a {
 }
 .card__container {
   display: flex;
+  height: 100%;
 }
 .card__wrapper {
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   box-shadow: 0px 0px 50px rgba(96, 4, 50, 0.23);
   font-size: 3px;
@@ -118,9 +140,15 @@ a {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: max(3em, min(calc(100vh * 3 / 140), 6em));
-  font-family: 'Bad Script';
+  font-size: max(3em, min(calc(100vw * 3 / 140), 6em));
   line-height: 1.6;
+}
+.women .card-text {
+  font-family: 'Bad Script';
+}
+.men .card-text {
+  font-family: 'Open Sans';
+  font-weight: 700;
 }
 /*---------------------------------- FOOTER ----------------------------------*/
 .footer__container {
@@ -131,19 +159,22 @@ a {
 .footer__info {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 .footer__info span {
-  margin-bottom: 8px;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
   color: #000000;
 }
-.footer__info span:last-child {
-  margin-bottom: 0;
-}
 .footer__social-link:not(:last-child) {
   margin-right: 16px;
+}
+.men .footer__social-link path {
+  fill: #1178B2;
+}
+.women .footer__social-link path {
+  fill: #C300C7;
 }
 
 @media (max-width: 880px) {
@@ -167,10 +198,12 @@ a {
     margin-right: 0;
     background-size: 30px;
   }
+}
+@media (max-width: 480px) {
   .footer__container {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
-  .footer__info {
+  .footer__social {
     margin-bottom: 20px;
   }
 }
